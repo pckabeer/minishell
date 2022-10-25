@@ -1,9 +1,11 @@
 
 NAME	= minishell
 cc		= gcc -lreadline 
-CFLAG	= -Wall -Werror -Wextra 
+CFLAG	= -Wall -Werror -Wextra -I libft/
 RMFLAG  = -f
-SRC		= minishell.c ft_split.c util.c
+SRC		= minishell.c parse.c
+LIBFT	= -L libft -lft
+
 
 OBJS	= $(SRC:.c=.o)
 
@@ -15,7 +17,9 @@ bonus	: all
 	$(CC) $(CFLAG) -c $< -o $@
 
 clean	:
-	$(RM) $(RMFLAG) $(OBJS)
+		@make clean -C libft/
+		$(RM) $(RMFLAG) $(OBJS)
+
 fclean	: clean
 	$(RM) $(RMFLAG) $(NAME)
 
@@ -24,10 +28,12 @@ re		: fclean all
 $(NAME) : $(OBJS)
 		@echo "\n"
 		@echo "\033[0;32m*************************\n"
+		@make -C libft/
+
 		@echo "Compiling minishell...\n"
 		@echo "*************************\n"
 
-		@$(cc) $(CFLAG) $(OBJS) -o  $(NAME)
+		@$(cc) $(CFLAG) $(OBJS) -o  $(NAME) $(LIBFT)
 		@echo "\n\033[0mDone !"
 
 .PHONY : all clean fclean re
