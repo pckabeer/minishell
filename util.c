@@ -35,6 +35,7 @@ void	ft_putstr_fd(char *s,int fd)
 	write(1, "\n", fd);
 }
 
+
 int	ft_atoi(const char *str)
 {
 	int				i;
