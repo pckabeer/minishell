@@ -1,71 +1,75 @@
 #include "minishell.h"
 
-/* Returns no of strings btween delimiters "c" in string "s"*/
-static int	strno(char const *s, char c)
-{
-	int	num;
 
-	num = 0;
-	if (*s == c || *s == 0)
-		--num;
+
+static int	ft_word_count(char const *s, char c)
+{
+	int	count;
+
+	count = 0;
+	while (*s && *s == c)
+		s++;
 	while (*s)
 	{
-		if (*s == c && *(s + 1) != c && *(s + 1) != 0)
-			++num;
-		++s;
+		count++;
+		while (*s && *s != c)
+			s++;
+		while (*s && *s == c)
+			s++;
 	}
-	return (num + 1);
+	return (count);
 }
 
-/* Returns length of string "s" from the beginning till the delimiter char "c"*/
-static int	lennexchar(char const *s, char c)
+static int	ft_word_len(char const *s, char c)
 {
 	int	len;
 
 	len = 0;
-	while (s[len] && s[len] != c)
+	while (*s && *s != c)
+	{
 		len++;
+		s++;
+	}
 	return (len);
 }
 
-/* free the array of strings if a single malloc fails occure*/
-static void	freesplit(char **strarr)
+static char	*ft_strndup(char const *s, int len)
 {
-	int	i;
+	char	*result;
+	int		i;
 
 	i = 0;
-	while (strarr[i] != 0)
-		free(strarr[i++]);
-	free (strarr);
+	result = (char *)malloc(sizeof (char) * (len + 1));
+	while (i < len)
+	{
+		result[i] = s[i];
+		i++;
+	}
+	result[i] = '\0';
+	return (result);
 }
 
-/*Returns am array of strings obtained by splitting "s" at char "c" occurences
-**malloc DANGER**/
-char	**ft_split(char const *s, char c)
+int	**ft_split(char **s, char c)
 {
-	int		pos;
-	int		nostr;
-	char	**strarr;
+	int		word_len;
+	int		counter;
 
-	pos = -1;
+	counter = 0;
 	if (!s)
 		return (0);
-	nostr = strno(s, c);
-	strarr = (char **)malloc((nostr + 1) * sizeof(char *));
-	if (strarr == 0)
+	*word_count = ft_word_count(s, ' ');
+	s = (char **) malloc(sizeof (char **) * (*word_count));
+	if (ps->result == NULL)
 		return (0);
-	while (++pos < nostr)
+	while (counter < *word_count)
 	{
-		while (*s == c)
+		while (*s && *s == ' ')
 			s++;
-		strarr[pos] = ft_substr(s, 0, lennexchar(s, c));
-		if (strarr[pos] == 0)
-		{
-			freesplit (strarr);
-			return (NULL);
-		}
-		s += lennexchar(s, c);
+		word_len = ft_word_len(s, ' ');
+		ps->result[counter] = ft_atoi(ft_strndup(s, word_len), ps);
+		s = s + word_len;
+		counter++;
 	}
-	strarr[pos] = 0;
-	return (strarr);
+
+	return (s);
 }

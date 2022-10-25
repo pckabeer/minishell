@@ -3,7 +3,7 @@ NAME	= minishell
 cc		= gcc -lreadline 
 CFLAG	= -Wall -Werror -Wextra 
 RMFLAG  = -f
-SRC		= minishell.c
+SRC		= minishell.c ft_split.c util.c
 
 OBJS	= $(SRC:.c=.o)
 

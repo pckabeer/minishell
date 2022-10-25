@@ -1,14 +1,21 @@
 #include "minishell.h"
 
-// int parse()
+ void parse(t_msvar *msv)
+ {
+    msv->i = -1;
+    while(msv->rline_split[msv->i++])
+    {
+        ft_putstr_fd(msv->rline_split[msv->i],1);
+    }
+ }
+/*
+    The function read_loop does a clean exit for the program 
+*/
 void cleanexit()
 {
-    exit();
+    exit(0);
 }
-char *ft_readmsv.rline()
-{
-    
-}
+
 void init_minishell(t_msvar *msv)
 {
     msv->rline = NULL;
@@ -25,7 +32,7 @@ int read_loop(t_msvar *msv)
         if(msv->rline)
         {
             add_history(msv->rline);
-            msv->rline_split = ft_split(msv->rline);
+            msv->rline_split = ft_split(msv->rline, ' ');
         }
         else
 		{

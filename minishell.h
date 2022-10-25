@@ -10,9 +10,12 @@
 
 typedef struct minishellvariables
 {
-    char *rline;
-    char **rline_split;
+    char    *rline;
+    char    **rline_split;
+    int     i;
 }t_msvar;
+
 char	**ft_split(char const *s, char c);
+void	ft_putstr_fd(char *s,int fd);
 
 #endif
