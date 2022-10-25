@@ -1,7 +1,5 @@
 #include "minishell.h"
 
-
-
 static int	ft_word_count(char const *s, char c)
 {
 	int	count;
@@ -49,27 +47,40 @@ static char	*ft_strndup(char const *s, int len)
 	return (result);
 }
 
-int	**ft_split(char **s, char c)
+static void	ft_free(char **s, int i)
+{
+	if (!s)
+	{
+		while (i-- != 0)
+			free(s[i]);
+		free(s);
+	}
+}
+
+char	**ft_split(char const *s, char c)
 {
 	int		word_len;
+	int		word_count;
+	char	**result;
 	int		counter;
 
 	counter = 0;
 	if (!s)
-		return (0);
-	*word_count = ft_word_count(s, ' ');
-	s = (char **) malloc(sizeof (char **) * (*word_count));
-	if (ps->result == NULL)
-		return (0);
-	while (counter < *word_count)
+		return (NULL);
+	word_count = ft_word_count(s, c);
+	result = (char **)malloc(sizeof (char *) * (word_count + 1));
+	if (result == NULL)
+		return (NULL);
+	while (counter < word_count)
 	{
-		while (*s && *s == ' ')
+		while (*s && *s == c)
 			s++;
-		word_len = ft_word_len(s, ' ');
-		ps->result[counter] = ft_atoi(ft_strndup(s, word_len), ps);
+		word_len = ft_word_len(s, c);
+		result[counter] = ft_strndup(s, word_len);
+		ft_free(result, counter - 1);
 		s = s + word_len;
 		counter++;
 	}
-
-	return (s);
+	result[word_count] = 0;
+	return (result);
 }
