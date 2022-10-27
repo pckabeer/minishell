@@ -25,7 +25,8 @@ typedef struct minishellvariables
     int     dquote;
     int     num_pipe;
     int     parse_error;
-    
+    int     word_count;
+    int     word_len;    
 }t_msvar;
 
 

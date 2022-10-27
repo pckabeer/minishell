@@ -13,6 +13,8 @@ void init_minishell(t_msvar *msv)
     msv->quote = 0;
     msv->dquote = 0;
     msv->parse_error = 0;
+    msv->word_count = 0;
+    msv->word_len = 0;
 }
 /*
     The function read_loop  reads line from the command line and then processes it 
