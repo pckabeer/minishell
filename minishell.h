@@ -20,12 +20,19 @@ typedef struct minishellvariables
     char    *rline;
     char    **rline_split;
     int     i;
-    int cmd_num;
+    int     cmd_num;
+    int     quote;
+    int     dquote;
+    int     num_pipe;
+    int     parse_error;
+    
 }t_msvar;
 
-char	**ft_split(char const *s, char c);
-void	ft_putstr_fd(char *s,int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
+
+void    parse_error(t_msvar *msv, int err_type);
+void    clean_exit(t_msvar *msv);
+void    ft_exec(t_msvar *msv);
+void    parse(t_msvar *msv);
 
 
 #endif
