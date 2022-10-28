@@ -58,23 +58,22 @@ void parse_split_elements(t_msvar *msv)
 */
 void parse_cmd_check(t_msvar *msv)
 {
-    if(!ft_strncmp("echo",msv->rline,4))
-        msv->cmd_num = 1;
-    else if(!ft_strncmp("cd",msv->rline,2))
-        msv->cmd_num = 2;
-    else if(!ft_strncmp("pwd",msv->rline,3))
-        msv->cmd_num = 3;
-    else if(!ft_strncmp("export",msv->rline,5))
-        msv->cmd_num = 4;
-    else if(!ft_strncmp("unset",msv->rline,5))
-        msv->cmd_num = 5;
-    else if(!ft_strncmp("env",msv->rline,3))
-        msv->cmd_num = 6;
-    else if(!ft_strncmp("exit",msv->rline,4))
-        msv->cmd_num = 7;
+    if(!ft_strncmp("echo",msv->block_list->content,4)&& strlen(msv->block_list->content) == 4)
+    msv->cmd_num = 1;
+    else if(!ft_strncmp("cd",msv->block_list->content,2)&& strlen(msv->block_list->content) == 2)
+    msv->cmd_num = 2;
+    else if(!ft_strncmp("pwd",msv->block_list->content,3)&& strlen(msv->block_list->content) == 3)
+    msv->cmd_num = 3;
+    else if(!ft_strncmp("export",msv->block_list->content,6)&& strlen(msv->block_list->content) == 6)
+    msv->cmd_num = 4;
+    else if(!ft_strncmp("unset",msv->block_list->content,5)&& strlen(msv->block_list->content) == 5)
+    msv->cmd_num = 5;
+    else if(!ft_strncmp("env",msv->block_list->content,3)&& strlen(msv->block_list->content) == 3)
+    msv->cmd_num = 6;
+    else if(!ft_strncmp("exit",msv->block_list->content,4)&& strlen(msv->block_list->content) == 4)
+    msv->cmd_num = 7;
     else
-        msv->parse_error = 1;
-       // parse_error(msv,1);
+    msv->parse_error = 1;
 }
 
 void parse_cmd_init(t_msvar *msv)
@@ -97,18 +96,11 @@ void parse_cmd_init(t_msvar *msv)
 
  void parse(t_msvar *msv)
  {
-    //char    *str;
+    int str_len;
 
-   parse_cmd_check(msv);
-   parse_cmd_init(msv);
-   parse_split_elements(msv);
-    // msv->i = -1;
-    // while(msv->rline_split[++msv->i])
-    // {
-    //     str = ft_strjoin(str,msv->rline_split[msv->i]);
-    //     str = ft_strjoin(str, " ");
-
-        
-    // }
-    //     ft_putstr_fd(str,1);
+    str_len = ft_strchr(msv->rline, ' ') - msv->rline;
+    msv->block_list = ft_lstnew(ft_substr(msv->rline, 0, str_len));
+    parse_cmd_check(msv);
+    parse_cmd_init(msv);
+    parse_split_elements(msv);
  }

@@ -15,6 +15,7 @@ void init_minishell(t_msvar *msv)
     msv->parse_error = 0;
     msv->word_count = 0;
     msv->word_len = 0;
+    msv->block_list = NULL;
 }
 
 /*
@@ -36,20 +37,19 @@ int read_loop(t_msvar *msv)
         if(!msv->parse_error)
             ft_exec(msv);
         else
-            parse_error(msv, 2);
+            parse_error(msv);
         temp = msv->rline;
         free(temp);
         init_minishell(msv);
     }
 }
+
 int main()
 {
     t_msvar msv;
 
     init_minishell(&msv);
     read_loop(&msv);
-
-
     return 0;
 }
 
