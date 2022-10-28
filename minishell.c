@@ -1,9 +1,9 @@
 
 #include "minishell.h"
+
 /*
     The function read_loop does a clean exit for the program 
 */
-
 void init_minishell(t_msvar *msv)
 {
     msv->rline = NULL;
@@ -16,6 +16,7 @@ void init_minishell(t_msvar *msv)
     msv->word_count = 0;
     msv->word_len = 0;
 }
+
 /*
     The function read_loop  reads line from the command line and then processes it 
 */
@@ -32,7 +33,10 @@ int read_loop(t_msvar *msv)
         parse(msv);
         if(msv->cmd_num == 7)
             clean_exit(msv);
-        ft_exec(msv);
+        if(!msv->parse_error)
+            ft_exec(msv);
+        else
+            parse_error(msv, 2);
         temp = msv->rline;
         free(temp);
         init_minishell(msv);
