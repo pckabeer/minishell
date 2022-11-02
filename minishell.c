@@ -26,7 +26,7 @@ int read_loop(t_msvar *msv)
     char *temp;
     while(1)
     {
-        msv->rline = readline("\033[0;32mminishell $ \033[0m");
+        msv->rline = readline("\033[1;35mminishell $ \033[0m");
         if(msv->rline)
             add_history(msv->rline);
         else

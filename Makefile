@@ -3,7 +3,7 @@ NAME	= minishell
 cc		= gcc -lreadline 
 CFLAG	= -Wall -Werror -Wextra -I libft/
 RMFLAG  = -f
-SRC		= minishell.c parse.c execute.c error.c
+SRC		= minishell.c parse.c execute.c error.c dlist.c
 LIBFT	= -L libft -lft
 
 

@@ -3,6 +3,7 @@
 void parse_error(t_msvar *msv)
 {
     msv->i = 0;
+    ft_putstr_fd("\033[0;31mm", 2);
     if(msv->parse_error == 1)
     {
         ft_putstr_fd("minishell: command not found: ", 1);
@@ -14,6 +15,8 @@ void parse_error(t_msvar *msv)
     else if(msv->parse_error == 3)
         ft_putstr_fd("minishell: parse error near \" ", 1);
     ft_putchar_fd('\n',1);
+        ft_putstr_fd("\033[0m", 2);
+
 }
 
 void clean_exit(t_msvar *msv)

@@ -58,19 +58,20 @@ void parse_split_elements(t_msvar *msv)
 */
 void parse_cmd_check(t_msvar *msv)
 {
-    if(!ft_strncmp("echo",msv->block_list->content,4)&& strlen(msv->block_list->content) == 4)
+    msv->temp = msv->block_list->content;
+    if(!ft_strncmp("echo",msv->temp,4) && strlen(msv->temp) == 4)
     msv->cmd_num = 1;
-    else if(!ft_strncmp("cd",msv->block_list->content,2)&& strlen(msv->block_list->content) == 2)
+    else if(!ft_strncmp("cd",msv->temp,2) && strlen(msv->temp) == 2)
     msv->cmd_num = 2;
-    else if(!ft_strncmp("pwd",msv->block_list->content,3)&& strlen(msv->block_list->content) == 3)
+    else if(!ft_strncmp("pwd",msv->temp,3) && strlen(msv->temp) == 3)
     msv->cmd_num = 3;
-    else if(!ft_strncmp("export",msv->block_list->content,6)&& strlen(msv->block_list->content) == 6)
+    else if(!ft_strncmp("export",msv->temp,6) && strlen(msv->temp) == 6)
     msv->cmd_num = 4;
-    else if(!ft_strncmp("unset",msv->block_list->content,5)&& strlen(msv->block_list->content) == 5)
+    else if(!ft_strncmp("unset",msv->temp,5) && strlen(msv->temp) == 5)
     msv->cmd_num = 5;
-    else if(!ft_strncmp("env",msv->block_list->content,3)&& strlen(msv->block_list->content) == 3)
+    else if(!ft_strncmp("env",msv->temp,3) && strlen(msv->temp) == 3)
     msv->cmd_num = 6;
-    else if(!ft_strncmp("exit",msv->block_list->content,4)&& strlen(msv->block_list->content) == 4)
+    else if(!ft_strncmp("exit",msv->temp,4) && strlen(msv->temp) == 4)
     msv->cmd_num = 7;
     else
     msv->parse_error = 1;
@@ -96,10 +97,10 @@ void parse_cmd_init(t_msvar *msv)
 
  void parse(t_msvar *msv)
  {
-    int str_len;
-
-    str_len = ft_strchr(msv->rline, ' ') - msv->rline;
-    msv->block_list = ft_lstnew(ft_substr(msv->rline, 0, str_len));
+    msv->i = ft_strchr(msv->rline, ' ') - msv->rline;
+    msv->temp = ft_substr(msv->rline, 0, msv->i);
+    msv->block_list = ft_dlstnew(msv->temp);
+    free(msv->temp);
     parse_cmd_check(msv);
     parse_cmd_init(msv);
     parse_split_elements(msv);
