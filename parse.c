@@ -6,70 +6,38 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 17:05:07 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 19:40:37 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/04 00:30:34 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	parse_quote_block(t_msvar *msv)
-{
-	msv->quote++;
-	msv->i++;
-	while (msv->rline[msv->i] != '\'' && msv->rline[msv->i] != '\0')
-	{
-		msv->w_len++;
-		msv->i++;
-	}
-	if (msv->rline[msv->i] == '\'')
-	{
-		msv->quote++;
-		msv->temp = ft_substr(msv->rline, msv->i - msv->w_len, msv->i);
-		ft_dlstadd_back(&msv->block_list, ft_dlstnew(msv->temp, 0, 0, '\''));
-		free(msv->temp);
-		msv->w_count++;
-	}
-	if (msv->quote % 2 != 0)
-				msv->parse_error = 2;
-}
-
-void	parse_dquote_block(t_msvar *msv)
-{
-	msv->dquote++;
-	msv->i++;
-	while (msv->rline[msv->i] != '"' && msv->rline[msv->i] != '\0')
-	{
-		msv->w_len++;
-		msv->i++;
-	}
-	if (msv->rline[msv->i] == '"')
-	{
-		msv->dquote++;
-		msv->temp = ft_substr(msv->rline, msv->i - msv->w_len, msv->i);
-		ft_dlstadd_back(&msv->block_list, ft_dlstnew(msv->temp, 0, 0, '\"'));
-		free(msv->temp);
-	}
-	if (msv->dquote % 2 != 0)
-		msv->parse_error = 3;
-}
 
 void	parse_split_elements(t_msvar *msv)
 {
-	if (msv->parse_error)
-		return ;
 	while (msv->rline[msv->i++])
 	{
+		if (msv->parse_error == 1)
+			break ;
 		if (msv->rline[msv->i] == '\'')
 			parse_quote_block(msv);
 		else if (msv->rline[msv->i] == '"')
 			parse_dquote_block(msv);
-		if (msv->parse_error == 1)
-			break ;
+		else if (msv->rline[msv->i] == '$')
+			parse_dollar_block(msv);
+		else if (msv->rline[msv->i] == '>')
+			parse_gt_block(msv);
+		else if (msv->rline[msv->i] == '<')
+			parse_lt_block(msv);
+		else if (msv->rline[msv->i] == '|')
+			parse_pipe_block(msv);
+		else
+			parse_nospl_block(msv);
 		msv->w_len = 0;
 	}
-	ft_putstr_fd("qcount = ", 1);
-	ft_putnbr_fd(msv->quote + msv->dquote, 1);
-	ft_putchar_fd('\n', 1);
+	// ft_putstr_fd("qcount = ", 1);
+	// ft_putnbr_fd(msv->quote + msv->dquote, 1);
+	// ft_putchar_fd('\n', 1);
 }
 
 /*
