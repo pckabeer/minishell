@@ -1,17 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dlist.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/03 12:13:54 by kpanikka          #+#    #+#             */
+/*   Updated: 2022/11/03 17:30:51 by kpanikka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-
-t_dlist	*ft_dlstnew(char *data)
+t_dlist	*ft_dlstnew(char *data, int cmd_seq, int len_q, char q)
 {
-	t_dlist	*element;
+	t_dlist	*new;
 
-	element = malloc(sizeof(t_dlist));
-	if (element == NULL)
-		return (0);
-	element -> content = data;
-	element -> next = NULL;
-	element -> prev = NULL;
-	return (element);
+	new = (t_dlist *)malloc(sizeof(t_dlist));
+	if (!new)
+		return (NULL);
+	new->content = data;
+	new->cmd_seq = cmd_seq;
+	new->len_quote = len_q;
+	new->quote = q;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
 }
 
 void	ft_dlstadd_back(t_dlist **lst, t_dlist *new)
@@ -59,7 +73,7 @@ void	ft_dlstclear(t_dlist **lst)
 	}
 }
 
-t_dlist	*ft_dlstlast(t_dlist *lst)
+t_dlist	*ft_dlstlast(t_dlist	*lst)
 {
 	while (lst)
 	{

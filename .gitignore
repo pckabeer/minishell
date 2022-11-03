@@ -1,0 +1,7 @@
+*.vscode
+*.o
+*.ds_store
+*.swp
+*.json
+*.log
+*.a
