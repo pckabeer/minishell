@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:36 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 18:24:58 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:26:45 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,17 @@ typedef struct s_dlist
 typedef struct minishellvariables
 {
 	char	*rline;
-	char    **env;
+	char	**env;
 	int     i;
-	int		cmd_num; 
-	int     quote;
-	int     dquote;
-	int     num_pipe;
-	int     parse_error;
-	int     w_count;
-	int		w_len;    
-	t_dlist *block_list;
-	char    *temp;
+	int		cmd_num;
+	int		quote;
+	int		dquote;
+	int		num_pipe;
+	int		parse_error;
+	int		w_count;
+	int		w_len;
+	t_dlist	*block_list;
+	char	*temp;
 }t_msvar;
 
 void	parse(t_msvar *msv);
