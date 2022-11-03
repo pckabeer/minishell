@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:36 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 18:26:45 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/03 21:14:12 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct minishellvariables
 	char	*rline;
 	char	**env;
 	int     i;
+	char	*output;
 	int		cmd_num;
 	int		quote;
 	int		dquote;
