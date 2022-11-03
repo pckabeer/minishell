@@ -6,17 +6,17 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:03 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 17:38:57 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:33:15 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void testcase(t_msvar *msv)
-{
-	ft_dlstadd_back(&msv->block_list, ft_dlstnew("echo", 1, 0, 0));
-	ft_dlstadd_back(&msv->block_list, ft_dlstnew("hai to all", 0, 0, '"'));
-}
+// void testcase(t_msvar *msv)
+// {
+// 	ft_dlstadd_back(&msv->block_list, ft_dlstnew("echo", 1, 0, 0));
+// 	ft_dlstadd_back(&msv->block_list, ft_dlstnew("hai to all", 0, 0, '"'));
+// }
 /*
 	The function read_loop does a clean exit for the program 
 */
@@ -68,10 +68,10 @@ int	main(int ac, char **av, char **env)
 {
 	t_msvar	msv;
 
-	if (ac == 2)
-	{
-		testcase(msv);
-	}
+	// if (ac == 2)
+	// {
+	// 	testcase(msv);
+	// }
 	(void)ac;
 	(void)av;
 	msv.env = env;

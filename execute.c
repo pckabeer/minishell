@@ -6,12 +6,17 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 17:42:15 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 18:09:34 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:36:10 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+void	ft_exec_cd(t_msvar *msv)
+{
+	(void) msv;
+	return ;
+}
 
 void	ft_exec(t_msvar *msv)
 {

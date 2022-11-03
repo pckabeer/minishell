@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 17:05:07 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 17:36:09 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:33:53 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	parse_cmd_init(t_msvar *msv)
 	msv->i = ft_strchr(msv->rline, ' ') - msv->rline;
 	msv->temp = ft_substr(msv->rline, 0, msv->i);
    // msv->block_list = ft_dlstnew(msv->temp);
-	ft_dlstadd_back(&msv->block_list, ft_dlstnew(msv->temp,1,0,0,0));
+	ft_dlstadd_back(&msv->block_list, ft_dlstnew(msv->temp,1,0,0));
 	free(msv->temp);
 	parse_cmd_check(msv);
 	parse_cmd_init(msv);

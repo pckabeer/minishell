@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:09:38 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 18:23:32 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:38:40 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_exec_echo(t_msvar *msv)
 			}
 			else
 			{
-				ft_putchar_fd(temp->content, 1);
+				ft_putchar_fd(temp->content[msv->i], 1);
 				temp= temp->next;
 			}
 		}
