@@ -7,7 +7,7 @@
 void init_minishell(t_msvar *msv)
 {
     msv->rline = NULL;
-    msv->rline_split = NULL;
+   // msv->rline_split = NULL;
     msv->cmd_num = 0;
     msv->num_pipe = 0;
     msv->quote = 0;
@@ -44,11 +44,14 @@ int read_loop(t_msvar *msv)
     }
 }
 
-int main()
+int main(int ac, char **av, char **env)
 {
     t_msvar msv;
+    (void)ac;
+    (void)av;
 
-    init_minishell(&msv);
+    msv.env = env;
+    init_minishell(&msv);    
     read_loop(&msv);
     return 0;
 }

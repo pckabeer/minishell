@@ -11,7 +11,9 @@ void parse_quote_block(t_msvar *msv)
             }
             if(msv->rline[msv->i] == '\'')
                {
-                    msv->quote++;     
+                    msv->quote++;    
+                    // msv->t_block = ft_substr(msv->rline, msv->i - msv->word_len, msv->word_len);
+                    //msv->t_block->quote = '\''; 
                     msv->word_count++;
                }
             if(msv->quote % 2 != 0)
@@ -99,7 +101,8 @@ void parse_cmd_init(t_msvar *msv)
  {
     msv->i = ft_strchr(msv->rline, ' ') - msv->rline;
     msv->temp = ft_substr(msv->rline, 0, msv->i);
-    msv->block_list = ft_dlstnew(msv->temp);
+   // msv->block_list = ft_dlstnew(msv->temp);
+    ft_dlstadd_back(&msv->block_list, ft_dlstnew(msv->temp));
     free(msv->temp);
     parse_cmd_check(msv);
     parse_cmd_init(msv);
