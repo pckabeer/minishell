@@ -11,9 +11,14 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+/*
+
+*/
 typedef struct s_dlist
 {
 	void			*content;
+    char            quote;
+    int             len_quote;
 	struct s_dlist	*next;
 	struct s_dlist	*prev;
 }	t_dlist;
