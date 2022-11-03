@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:09:38 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 19:41:39 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/04 00:11:51 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	ft_exec_echo_q(t_dlist *temp)
 
 void	ft_exec_echo_dq(t_dlist *temp)
 {		
+	int	i;
+
 	i = 0;
 	while (temp->content[i])
 	{
@@ -46,7 +48,7 @@ void	ft_exec_echo_dq(t_dlist *temp)
 void	ft_exec_echo(t_msvar *msv)
 {
 	t_dlist	*temp;
-	
+
 	temp = msv->block_list->next;
 	if (temp->quote == '\'')
 		ft_exec_echo_q(temp);

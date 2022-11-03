@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:36 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 21:14:12 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/04 00:32:05 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct minishellvariables
 {
 	char	*rline;
 	char	**env;
-	int     i;
+	int		i;
 	char	*output;
 	int		cmd_num;
 	int		quote;
@@ -75,6 +75,15 @@ typedef struct minishellvariables
 
 void	parse(t_msvar *msv);
 void	parse_error(t_msvar *msv);
+void	parse_gt_block(t_msvar *msv);
+void	parse_lt_block(t_msvar *msv);
+void	parse_pipe_block(t_msvar *msv);
+void	parse_quote_block(t_msvar *msv);
+void	parse_dquote_block(t_msvar *msv);
+void	parse_dollar_block(t_msvar *msv);
+void	parse_nospl_block(t_msvar *msv);
+
+
 void	clean_exit(t_msvar *msv);
 void	ft_exec(t_msvar *msv);
 void	ft_exec_echo(t_msvar *msv);
