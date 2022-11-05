@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:10:45 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 19:11:32 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/05 16:28:32 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ void	parse_error(t_msvar *msv)
 		ft_putstr_fd("minishell: parse error near ' ", 1);
 	else if (msv->parse_error == 3)
 		ft_putstr_fd("minishell: parse error near \" ", 1);
+	else if (msv->parse_error == 4)
+		ft_putstr_fd("minishell:  parse error near `>' ", 1);
+	else if (msv->parse_error == 5)
+		ft_putstr_fd("minishell:  parse error near `<' ", 1);
+	else if (msv->parse_error == 6)
+		ft_putstr_fd("minishell:  parse error near `|' ", 1);
 	ft_putchar_fd('\n', 1);
 	ft_putstr_fd("\033[0m", 2);
 
