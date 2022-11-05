@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:03 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 18:33:15 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/05 11:16:17 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init_minishell(t_msvar	*msv)
 	msv->w_count = 0;
 	msv->w_len = 0;
 	msv->block_list = NULL;
+	//msv->env_list = NULL;
 }
 
 /*
@@ -74,8 +75,10 @@ int	main(int ac, char **av, char **env)
 	// }
 	(void)ac;
 	(void)av;
-	msv.env = env;
 	init_minishell(&msv);
-	read_loop(&msv);
+	load_env(&msv, env);
+	ft_elstprint(msv.env_list);
+
+	//read_loop(&msv);
 	return (0);
 }
