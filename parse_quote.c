@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 00:25:16 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/04 00:26:44 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:23:15 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	parse_quote_block(t_msvar *msv)
 	if (msv->rline[msv->i] == '\'')
 	{
 		msv->quote++;
-		msv->temp = ft_substr(msv->rline, msv->i - msv->w_len, msv->i);
+		msv->temp = ft_substr(msv->rline, msv->i - msv->w_len, (msv->w_len));
 		ft_dlstadd_back(&msv->block_list, ft_dlstnew(msv->temp, 0, 0, '\''));
 		free(msv->temp);
 		msv->w_count++;
@@ -45,7 +45,7 @@ void	parse_dquote_block(t_msvar *msv)
 	if (msv->rline[msv->i] == '"')
 	{
 		msv->dquote++;
-		msv->temp = ft_substr(msv->rline, msv->i - msv->w_len, msv->i);
+		msv->temp = ft_substr(msv->rline, msv->i - msv->w_len, msv->w_len);
 		ft_dlstadd_back(&msv->block_list, ft_dlstnew(msv->temp, 0, 0, '\"'));
 		free(msv->temp);
 	}

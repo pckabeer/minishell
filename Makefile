@@ -6,7 +6,7 @@
 #    By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 18:36:40 by kpanikka          #+#    #+#              #
-#    Updated: 2022/11/03 18:38:19 by kpanikka         ###   ########.fr        #
+#    Updated: 2022/11/05 09:22:55 by kpanikka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME	= minishell
 cc		= gcc
 CFLAG	= -Wall -Werror -Wextra -I libft/
 RMFLAG  = -f
-SRC		= minishell.c parse.c execute.c error.c dlist.c echo.c
+SRC		= minishell.c parse.c execute.c error.c dlist.c echo.c  \
+		parse_spl_char.c parse_quote.c env.c elist.c util.c
 LIBFT	= -L libft -lft
 
 
