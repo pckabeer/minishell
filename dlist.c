@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:13:54 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/03 17:30:51 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/05 18:54:38 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,20 @@ void	ft_dlstadd_front(t_dlist **lst, t_dlist *new)
 	*lst = new;
 }
 
+int	ft_dlstprt(t_dlist *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		printf("content: %s, cmd_seq: %d, len_quote: %d, quote: %c\n", lst->content, lst->cmd_seq, lst->len_quote, lst->quote);
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}
+
 int	ft_dlstsize(t_dlist *lst)
 {
 	int	i;
@@ -60,7 +74,6 @@ int	ft_dlstsize(t_dlist *lst)
 	}
 	return (i);
 }
-
 void	ft_dlstclear(t_dlist **lst)
 {
 	t_dlist	*n_lst;

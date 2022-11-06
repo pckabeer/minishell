@@ -6,17 +6,12 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:03 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/05 14:01:45 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/06 08:43:23 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// void testcase(t_msvar *msv)
-// {
-// 	ft_dlstadd_back(&msv->block_list, ft_dlstnew("echo", 1, 0, 0));
-// 	ft_dlstadd_back(&msv->block_list, ft_dlstnew("hai to all", 0, 0, '"'));
-// }
 /*
 	The function read_loop does a clean exit for the program 
 */
@@ -41,10 +36,8 @@ void	init_minishell(t_msvar	*msv)
 * 
 */
 
-int read_loop(t_msvar *msv)
+int	read_loop(t_msvar *msv)
 {
-	char    *temp;
-
 	while (1)
 	{
 		msv->rline = readline("\033[1;35mminishell $ \033[0m");
@@ -59,8 +52,9 @@ int read_loop(t_msvar *msv)
 			ft_exec(msv);
 		else
 			parse_error(msv);
-		temp = msv->rline;
-		free(temp);
+		ft_dlstprt(msv->block_list); /// check print
+		msv->temp = msv->rline;
+		free(msv->temp);
 		init_minishell(msv);
 	}
 }

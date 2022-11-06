@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:36 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/05 09:51:41 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/05 18:55:01 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	ft_dlstadd_front(t_dlist **lst, t_dlist *new);
 int		ft_dlstsize(t_dlist *lst);
 void	ft_dlstclear(t_dlist **lst);
 t_dlist	*ft_dlstlast(t_dlist *lst);
+int		ft_dlstprt(t_dlist *lst);
+
 
 t_env	*ft_elstnew(char *key, char *value);
 void	ft_elstadd_back(t_env **lst, t_env *new);
