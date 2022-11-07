@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:13:54 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/05 09:52:48 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:12:56 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,6 @@ void	ft_elstadd_front(t_env **lst, t_env *new)
 	*lst = new;
 }
 
-
-int	ft_elstprint(t_env *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst)
-	{
-		printf("%s = %s\n", lst->key, lst->value);
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}
 
 int	ft_elstsize(t_env *lst)
 {

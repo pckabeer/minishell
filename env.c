@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:51:05 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/06 09:22:16 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:13:11 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,25 @@ char	*ft_getenv(char *str, t_env *env_list)
 {
 	while (env_list)
 	{
-		if (ft_strncmp(str, env_list->key,32767) == 0)
+		if (ft_strncmp(str, env_list->key, 32767) == 0)
 			return (env_list->value);
 		env_list = env_list->next;
 	}
 	return (NULL);
+}
+
+
+
+int	ft_elstprint(t_env *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		printf("%s = %s\n", lst->key, lst->value);
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

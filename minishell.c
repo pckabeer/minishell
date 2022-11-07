@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:03 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/06 08:43:23 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:52:29 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	init_minishell(t_msvar	*msv)
 	msv->w_len = 0;
 	msv->block_list = NULL;
 	msv->env_list = NULL;
+	if (msv->output)
+		ft_bzero(msv->output, 32767); 
+	else
+		msv->output = ft_calloc(32767, 1);
+	msv->temp = NULL;
+	msv->b_temp = NULL;
 }
 
 /*
