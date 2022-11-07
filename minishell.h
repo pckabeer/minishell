@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:36 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/05 09:51:41 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:40:41 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct minishellvariables
 	t_dlist	*block_list;
 	t_env	*env_list;	
 	char	*temp;
+	char	*b_temp;
 }t_msvar;
 
 void	parse(t_msvar *msv);
@@ -87,12 +88,11 @@ void	parse_lt_block(t_msvar *msv);
 void	parse_pipe_block(t_msvar *msv);
 void	parse_quote_block(t_msvar *msv);
 void	parse_dquote_block(t_msvar *msv);
-void	parse_dollar_block(t_msvar *msv);
+char	*parse_dollar_block(t_msvar *msv);
 void	parse_nospl_block(t_msvar *msv);
 
 void	load_env(t_msvar *msv, char **env);
 char	*ft_getenv(char *str, t_env *env_list);
-
 
 void	clean_exit(t_msvar *msv);
 void	ft_exec(t_msvar *msv);
@@ -104,6 +104,7 @@ void	ft_dlstadd_front(t_dlist **lst, t_dlist *new);
 int		ft_dlstsize(t_dlist *lst);
 void	ft_dlstclear(t_dlist **lst);
 t_dlist	*ft_dlstlast(t_dlist *lst);
+int		ft_dlstprt(t_dlist *lst);
 
 t_env	*ft_elstnew(char *key, char *value);
 void	ft_elstadd_back(t_env **lst, t_env *new);
@@ -111,7 +112,7 @@ void	ft_elstadd_front(t_env **lst, t_env *new);
 int		ft_elstsize(t_env *lst);
 void	ft_elstclear(t_env **lst);
 t_env	*ft_elstlast(t_env *lst);
-int	ft_elstprint(t_env *lst);
+int		ft_elstprint(t_env *lst);
 
 char	*ft_get_word(char *str, char ch);
 
