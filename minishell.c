@@ -6,11 +6,13 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:03 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/06 17:52:29 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/08 09:17:42 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_msvar	msv;
 
 /*
 	The function read_loop does a clean exit for the program 
@@ -24,14 +26,12 @@ void	init_minishell(t_msvar	*msv)
 	msv->quote = 0;
 	msv->dquote = 0;
 	msv->parse_error = 0;
-	msv->w_count = 0;
 	msv->w_len = 0;
+	msv->w_count = 0;
+	msv->exit_flag = 0;
 	msv->block_list = NULL;
 	msv->env_list = NULL;
-	if (msv->output)
-		ft_bzero(msv->output, 32767); 
-	else
-		msv->output = ft_calloc(32767, 1);
+	msv->output = ft_calloc(32767, 1);
 	msv->temp = NULL;
 	msv->b_temp = NULL;
 }
@@ -52,25 +52,34 @@ int	read_loop(t_msvar *msv)
 		else
 			clean_exit(msv);
 		parse(msv);
-		if (msv->cmd_num == 7)
+		if (msv->cmd_num == 7 || msv->exit_flag == 1)
 			clean_exit(msv);
 		if (!msv->parse_error)
 			ft_exec(msv);
 		else
 			parse_error(msv);
-		ft_dlstprt(msv->block_list); /// check print
+		//ft_dlstprt(msv->block_list); /// check print
 		msv->temp = msv->rline;
 		free(msv->temp);
+		free(msv->output);
 		init_minishell(msv);
+	}
+}
+
+void sigintHandler(int sig_num)
+{
+	if (sig_num == SIGINT)
+	{
+		msv.exit_flag = 1;
+		clean_exit(&msv);
 	}
 }
 
 int	main(int ac, char **av, char **env)
 {
-	t_msvar	msv;
-
 	(void)ac;
 	(void)av;
+	signal(SIGINT, sigintHandler);
 	init_minishell(&msv);
 	load_env(&msv, env);
 	read_loop(&msv);
