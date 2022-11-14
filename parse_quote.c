@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 00:25:16 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/07 21:16:11 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/08 00:42:09 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,19 @@ void	parse_dquote_block(t_msvar *msv)
 	msv->dquote++;
 	msv->i++;
 	msv->temp = ft_calloc(2, 1);
-	// msv->outlen[0] = 1;
 	while (msv->rline[msv->i] != '"' && msv->rline[msv->i] != '\0')
 	{
-		msv->w_len = ft_strlen(msv->output);
 		if (msv->rline[msv->i] == '$')
 		{
-			// msv->output = ft_strjoin(msv->output,); 
 			ft_strlcat(msv->output, parse_dollar_block(msv), 32767);
-			printf("key: %s\n", msv->output);
+			free(msv->b_temp);
 		}
 		else
 		{
-			ft_strlcat(msv->output, msv->temp, msv->w_len + 2);
 			msv->temp[0] = msv->rline[msv->i];
-			msv->w_len++;
+			ft_strlcat(msv->output, msv->temp, 32767);
 			msv->i++;
 		}
-		printf("-- output: %s -- %c -- %s\n", msv->output, msv->rline[msv->i],msv->temp);
 	}
 	free(msv->temp);
 	if (msv->rline[msv->i] == '"')
@@ -73,6 +68,8 @@ void	parse_dquote_block(t_msvar *msv)
 * * parses the dollar block and fetches the value from the key parsed 
 * * to the env_list 
 *   @msv: struct with all the variables
+* ! the function cannot use ft_get_word,because "$USER"hi is a valid input
+* ! and ft_get_word would return "USER"hi instead try parsing msv->rline[i++]
 *  return: value for the key
 */
 char	*parse_dollar_block(t_msvar *msv)
@@ -80,19 +77,19 @@ char	*parse_dollar_block(t_msvar *msv)
 	int		len;
 
 	msv->i++;
-	msv->temp = ft_get_word(msv->rline + msv->i, ' ');
-	//printf("key: %s\n", msv->temp);
-	len = ft_strlen(msv->temp);
+	msv->b_temp = ft_get_word(msv->rline + msv->i, ' ');
+	len = ft_strlen(msv->b_temp);
 	msv->i += len;
 	msv->w_len += len;
-	if (msv->temp[len - 1] == '"')
+	if (msv->b_temp[len - 1] == '"')
 	{
-		msv->temp[len - 1] = '\0';
-		msv->temp = ft_getenv(msv->temp, msv->env_list);
-		msv->temp[len - 1] = '"';
+		msv->b_temp[len - 1] = '\0';
+		msv->b_temp = ft_getenv(msv->b_temp, msv->env_list);
+		msv->b_temp[len - 1] = '"';
 	}
-	msv->temp = ft_getenv(msv->temp, msv->env_list);
-	return (msv->temp);
+	else
+		msv->b_temp = ft_getenv(msv->b_temp, msv->env_list);
+	return (msv->b_temp);
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:36 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/07 18:40:41 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/07 22:16:05 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct minishellvariables
 	int		dquote;
 	int		num_pipe;
 	int		parse_error;
+	int		exit_flag;
 	int		w_count;
 	int		w_len;
 	t_dlist	*block_list;
