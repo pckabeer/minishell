@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:03 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/08 09:17:42 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/16 00:16:48 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	read_loop(t_msvar *msv)
 		parse(msv);
 		if (msv->cmd_num == 7 || msv->exit_flag == 1)
 			clean_exit(msv);
+
 		if (!msv->parse_error)
 			ft_exec(msv);
 		else
@@ -66,7 +67,7 @@ int	read_loop(t_msvar *msv)
 	}
 }
 
-void sigintHandler(int sig_num)
+void siginthandler(int sig_num)
 {
 	if (sig_num == SIGINT)
 	{
@@ -79,9 +80,10 @@ int	main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
-	signal(SIGINT, sigintHandler);
+	signal(SIGINT, siginthandler);
 	init_minishell(&msv);
 	load_env(&msv, env);
+	ft_elstprint(msv.env_list);
 	read_loop(&msv);
 	return (0);
 }

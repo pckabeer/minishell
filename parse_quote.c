@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 00:25:16 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/08 00:42:09 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/14 20:23:58 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ void	parse_dquote_block(t_msvar *msv)
 	msv->dquote++;
 	msv->i++;
 	msv->temp = ft_calloc(2, 1);
+				// printf("hi  4");
+
 	while (msv->rline[msv->i] != '"' && msv->rline[msv->i] != '\0')
 	{
 		if (msv->rline[msv->i] == '$')
 		{
+			// printf("hi");
 			ft_strlcat(msv->output, parse_dollar_block(msv), 32767);
 			free(msv->b_temp);
 		}
