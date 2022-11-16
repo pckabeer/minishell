@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 00:25:16 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/14 20:23:58 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/16 00:27:58 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	parse_dquote_block(t_msvar *msv)
 * * parses the dollar block and fetches the value from the key parsed 
 * * to the env_list 
 *   @msv: struct with all the variables
-* ! the function cannot use ft_get_word,because "$USER"hi is a valid input
+* ! the function cannot use ft_get_word,because <"$USER"hi > is a valid input
 * ! and ft_get_word would return "USER"hi instead try parsing msv->rline[i++]
 *  return: value for the key
 */
