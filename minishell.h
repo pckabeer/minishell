@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:36 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/07 22:16:05 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/16 23:35:30 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-
+# include <signal.h>
 # include "libft/libft.h"
-
+# include <dirent.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
@@ -60,9 +60,8 @@ typedef struct s_dlist
 	cmd_num is the number to find which command 
 	eg echo = 1 
 		...
-
-
 */
+
 typedef struct minishellvariables
 {
 	char	*rline;
@@ -116,5 +115,11 @@ t_env	*ft_elstlast(t_env *lst);
 int		ft_elstprint(t_env *lst);
 
 char	*ft_get_word(char *str, char ch);
+
+//************ pwd *******************
+void 	ft_exec_pwd(t_msvar *lst);
+void 	ft_exec_env(t_msvar *lst);
+void 	ft_exec_exit();
+void ft_exec_cd(t_msvar *lst);
 
 #endif

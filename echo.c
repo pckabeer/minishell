@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:09:38 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/04 16:39:41 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/15 05:29:13 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_exec_echo_dq(t_dlist *temp, t_msvar *msv)
 			ft_putchar_fd(temp->content[i], 1);
 		i++;
 	}
-	ft_putchar_fd('\n', 1);
+	// ft_putchar_fd('\n', 1);
 	return ;
 }
 
@@ -50,7 +50,7 @@ void	ft_exec_echo(t_msvar *msv)
 		ft_exec_echo_dq(temp, msv);
 	else 
 	{
-
+		
 	}
 	//ft_putstr_fd(msv->rline+5, 1);
 	ft_putchar_fd('\n', 1);

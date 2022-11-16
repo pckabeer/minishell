@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 17:05:07 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/07 22:13:54 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/15 06:38:07 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ void	parse_cmd_check(t_msvar *msv)
 	else if (!(ft_strncmp("cd", msv->temp, 2)) && strlen(msv->temp) == 2)
 		msv->cmd_num = 2;
 	else if (!(ft_strncmp("pwd", msv->temp, 3)) && strlen(msv->temp) == 3)
+	{
 		msv->cmd_num = 3;
+	}
 	else if (!(ft_strncmp("export", msv->temp, 6)) && strlen(msv->temp) == 6)
 		msv->cmd_num = 4;
 	else if (!(ft_strncmp("unset", msv->temp, 5)) && strlen(msv->temp) == 5)
@@ -71,7 +73,9 @@ void	parse_cmd_init(t_msvar *msv)
 	else if (msv->cmd_num == 2)
 		msv->i = 2;
 	else if (msv->cmd_num == 3)
+	{
 		msv->i = 3;
+	}
 	else if (msv->cmd_num == 4)
 		msv->i = 6;
 	else if (msv->cmd_num == 5)
