@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 00:25:16 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/08 00:42:09 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/16 00:27:58 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ void	parse_dquote_block(t_msvar *msv)
 	msv->dquote++;
 	msv->i++;
 	msv->temp = ft_calloc(2, 1);
+				// printf("hi  4");
+
 	while (msv->rline[msv->i] != '"' && msv->rline[msv->i] != '\0')
 	{
 		if (msv->rline[msv->i] == '$')
 		{
+			// printf("hi");
 			ft_strlcat(msv->output, parse_dollar_block(msv), 32767);
 			free(msv->b_temp);
 		}
@@ -68,7 +71,7 @@ void	parse_dquote_block(t_msvar *msv)
 * * parses the dollar block and fetches the value from the key parsed 
 * * to the env_list 
 *   @msv: struct with all the variables
-* ! the function cannot use ft_get_word,because "$USER"hi is a valid input
+* ! the function cannot use ft_get_word,because <"$USER"hi > is a valid input
 * ! and ft_get_word would return "USER"hi instead try parsing msv->rline[i++]
 *  return: value for the key
 */
