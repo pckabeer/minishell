@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:03 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/16 00:16:48 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/21 21:30:26 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int ac, char **av, char **env)
 	signal(SIGINT, siginthandler);
 	init_minishell(&msv);
 	load_env(&msv, env);
-	ft_elstprint(msv.env_list);
+	// ft_elstprint(msv.env_list);
 	read_loop(&msv);
 	return (0);
 }
