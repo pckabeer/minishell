@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:10:45 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/08 08:47:16 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/24 19:35:14 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,11 @@ void	parse_error(t_msvar *msv)
 		ft_putstr_fd("minishell:  parse error near `|' ", 1);
 	ft_putchar_fd('\n', 1);
 	ft_putstr_fd("\033[0m", 2);
-
 }
 
 void	clean_exit(t_msvar *msv)
 {
 	free(msv->rline);
-	printf("\n \033[1;34mminishell exited .... \033[0m");
+	//printf("\n \033[1;34mminishell exited .... \033[0m");
 	exit(0);
 }

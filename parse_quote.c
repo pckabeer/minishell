@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 00:25:16 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/16 00:27:58 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:32:32 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*parse_dollar_block(t_msvar *msv)
 	int		len;
 
 	msv->i++;
-	msv->b_temp = ft_get_word(msv->rline + msv->i, ' ');
+	msv->b_temp = ft_get_dword(msv->rline + msv->i);
 	len = ft_strlen(msv->b_temp);
 	msv->i += len;
 	msv->w_len += len;

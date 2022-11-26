@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
+/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:44:56 by aelsiddi          #+#    #+#             */
-/*   Updated: 2022/11/21 23:23:38 by aelsiddi         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:35:31 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void ft_exec_env(t_msvar *lst)
 	free(temp);
 }
 
-void ft_exec_exit()
+void ft_exec_exit(void)
 {
 	exit(3);
 }

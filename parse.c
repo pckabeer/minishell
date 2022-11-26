@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
+/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 17:05:07 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/17 00:13:23 by aelsiddi         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:24:14 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 void	parse_split_elements(t_msvar *msv)
 {
@@ -63,7 +62,6 @@ void	parse_cmd_check(t_msvar *msv)
 		msv->parse_error = 1;
 		msv->block_list->cmd_seq = msv->cmd_num;
 	}
-
 }
 
 void	parse_cmd_init(t_msvar *msv)
@@ -86,9 +84,10 @@ void	parse_cmd_init(t_msvar *msv)
 
 void	parse(t_msvar *msv)
 {
-	msv->temp = ft_get_word(msv->rline, ' ');
-	ft_dlstadd_back(&msv->block_list, ft_dlstnew(msv->temp, 1, 0, 0));
-	parse_cmd_check(msv);
-	parse_cmd_init(msv);
-	parse_split_elements(msv);
+	// msv->temp = ft_get_word(msv->rline, ' '); // have to change because first word neednot be the command eg : << x echo 'hi'
+	// ft_dlstadd_back(&msv->block_list, ft_dlstnew(msv->temp, 1, 0, 0));
+	// parse_cmd_check(msv);
+	// parse_cmd_init(msv);
+	// if (ft_strlen(msv->temp) < ft_strlen(msv->rline))
+		parse_split_elements(msv);
 }

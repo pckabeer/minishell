@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
+/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:36 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/24 14:47:32 by aelsiddi         ###   ########.fr       */
+/*   Updated: 2022/11/25 10:35:59 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,19 +115,20 @@ t_env	*ft_elstlast(t_env *lst);
 int		ft_elstprint(t_env *lst);
 
 char	*ft_get_word(char *str, char ch);
+char	*ft_get_dword(char *str);
 
-void 	ft_exec_pwd(t_msvar *lst);
-void 	ft_exec_env(t_msvar *lst);
-void 	ft_exec_exit();
+void	ft_exec_pwd(t_msvar *lst);
+void	ft_exec_env(t_msvar *lst);
+void	ft_exec_exit(void);
 // void ft_exec_cd(t_msvar *lst);
-void 	ft_exec_cd(t_msvar *lst);
+void	ft_exec_cd(t_msvar *lst);
 char	*ft_substr2(char *s, unsigned int start, size_t	len);
 
 //*****************dir.c******************//
-int getDirList(char *str);
-int ls(t_msvar *lst);
+int	getDirList(char *str);
+int	ls(t_msvar *lst);
 
 //***********export.c****************//
-void ft_exec_export(t_msvar *lst);
+void	ft_exec_export(t_msvar *lst);
 
 #endif

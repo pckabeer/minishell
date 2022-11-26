@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
+/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:03 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/21 21:30:26 by aelsiddi         ###   ########.fr       */
+/*   Updated: 2022/11/25 11:38:52 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	read_loop(t_msvar *msv)
 		parse(msv);
 		if (msv->cmd_num == 7 || msv->exit_flag == 1)
 			clean_exit(msv);
-
 		if (!msv->parse_error)
 			ft_exec(msv);
 		else
@@ -63,6 +62,7 @@ int	read_loop(t_msvar *msv)
 		msv->temp = msv->rline;
 		free(msv->temp);
 		free(msv->output);
+		// linked list of command
 		init_minishell(msv);
 	}
 }
@@ -71,8 +71,12 @@ void siginthandler(int sig_num)
 {
 	if (sig_num == SIGINT)
 	{
-		msv.exit_flag = 1;
-		clean_exit(&msv);
+		// msv.exit_flag = 1;
+		// clean_exit(&msv);
+	}
+	if (sig_num == SIGQUIT)
+	{
+		// 
 	}
 }
 
@@ -83,6 +87,8 @@ int	main(int ac, char **av, char **env)
 	signal(SIGINT, siginthandler);
 	init_minishell(&msv);
 	load_env(&msv, env);
+	// execve("/bin/ls", av, env);
+	// access("/bin/ls",X_OK); // this -1 
 	// ft_elstprint(msv.env_list);
 	read_loop(&msv);
 	return (0);

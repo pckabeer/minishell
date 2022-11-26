@@ -6,12 +6,11 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:09:38 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/14 20:17:22 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/24 21:22:52 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 void	ft_exec_echo_q(t_dlist *temp)
 {
@@ -20,7 +19,6 @@ void	ft_exec_echo_q(t_dlist *temp)
 	//ft_putchar_fd('\n', 1);
 	return ;
 }
-
 
 void	ft_exec_echo_dq(t_dlist *temp, t_msvar *msv)
 {		
@@ -42,14 +40,16 @@ void	ft_exec_echo(t_msvar *msv)
 {
 	t_dlist	*temp;
 
-	temp = msv->block_list->next;
-	if (temp->quote == '\'')
-		ft_exec_echo_q(temp);
-	else if (temp->quote == '\"')
-		ft_exec_echo_dq(temp, msv);
-	else 
+	if (msv->block_list->next)
 	{
-
+		temp = msv->block_list->next;
+		if (temp->quote == '\'')
+			ft_exec_echo_q(temp);
+		else if (temp->quote == '\"')
+			ft_exec_echo_dq(temp, msv);
+		else
+		{
+		}
 	}
 	//ft_putstr_fd(msv->rline+5, 1);
 	ft_putchar_fd('\n', 1);
