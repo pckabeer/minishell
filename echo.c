@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:09:38 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/14 20:17:22 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/12/01 22:26:17 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_exec_echo(t_msvar *msv)
 		ft_exec_echo_q(temp);
 	else if (temp->quote == '\"')
 		ft_exec_echo_dq(temp, msv);
-	else 
+	else
 	{
 
 	}

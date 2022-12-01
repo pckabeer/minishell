@@ -6,7 +6,7 @@
 /*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 17:05:07 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/17 00:13:23 by aelsiddi         ###   ########.fr       */
+/*   Updated: 2022/12/01 21:58:14 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,8 @@ void	parse_cmd_check(t_msvar *msv)
 	else if (!(ft_strncmp("exit", msv->temp, 4)) && strlen(msv->temp) == 4)
 		msv->cmd_num = 7;
 	else
-	{
 		msv->parse_error = 1;
-		msv->block_list->cmd_seq = msv->cmd_num;
-	}
+	msv->block_list->cmd_seq = msv->cmd_num;
 
 }
 
