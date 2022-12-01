@@ -3,20 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+         #
+#    By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 18:36:40 by kpanikka          #+#    #+#              #
-#    Updated: 2022/11/05 09:22:55 by kpanikka         ###   ########.fr        #
+#    Updated: 2022/11/24 01:02:28 by aelsiddi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	= minishell
-cc		= gcc
+cc		= gcc -g
 CFLAG	= -Wall -Werror -Wextra -I libft/
 RMFLAG  = -f
 SRC		= minishell.c parse.c execute.c error.c dlist.c echo.c  \
-		parse_spl_char.c parse_quote.c env.c elist.c util.c
+		parse_spl_char.c parse_quote.c env.c elist.c util.c pwd.c dir.c \
+		export.c
 LIBFT	= -L libft -lft
 
 

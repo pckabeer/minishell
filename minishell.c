@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:03 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/16 00:16:48 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/12/01 22:07:12 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_minishell(t_msvar	*msv)
 	msv->w_count = 0;
 	msv->exit_flag = 0;
 	msv->block_list = NULL;
-	msv->env_list = NULL;
+	//msv->env_list = NULL;
 	msv->output = ft_calloc(32767, 1);
 	msv->temp = NULL;
 	msv->b_temp = NULL;
@@ -83,7 +83,7 @@ int	main(int ac, char **av, char **env)
 	signal(SIGINT, siginthandler);
 	init_minishell(&msv);
 	load_env(&msv, env);
-	ft_elstprint(msv.env_list);
+	// ft_elstprint(msv.env_list);
 	read_loop(&msv);
 	return (0);
 }

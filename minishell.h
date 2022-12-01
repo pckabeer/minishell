@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:36 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/14 20:44:00 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:47:32 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@
 # include <string.h>
 # include <signal.h>
 # include <unistd.h>
-
+# include <dirent.h>
 # include "libft/libft.h"
-
 # include <readline/readline.h>
 # include <readline/history.h>
 
@@ -61,8 +60,6 @@ typedef struct s_dlist
 	cmd_num is the number to find which command 
 	eg echo = 1 
 		...
-
-
 */
 typedef struct minishellvariables
 {
@@ -97,6 +94,7 @@ void	load_env(t_msvar *msv, char **env);
 char	*ft_getenv(char *str, t_env *env_list);
 
 void	clean_exit(t_msvar *msv);
+// void	ft_exec(t_msvar *msv);
 void	ft_exec(t_msvar *msv);
 void	ft_exec_echo(t_msvar *msv);
 
@@ -117,5 +115,19 @@ t_env	*ft_elstlast(t_env *lst);
 int		ft_elstprint(t_env *lst);
 
 char	*ft_get_word(char *str, char ch);
+
+void 	ft_exec_pwd(t_msvar *lst);
+void 	ft_exec_env(t_msvar *lst);
+void 	ft_exec_exit();
+// void ft_exec_cd(t_msvar *lst);
+void 	ft_exec_cd(t_msvar *lst);
+char	*ft_substr2(char *s, unsigned int start, size_t	len);
+
+//*****************dir.c******************//
+int getDirList(char *str);
+int ls(t_msvar *lst);
+
+//***********export.c****************//
+void ft_exec_export(t_msvar *lst);
 
 #endif
