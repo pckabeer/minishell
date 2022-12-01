@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 17:05:07 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/16 00:20:25 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/12/01 21:43:25 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ void	parse_cmd_check(t_msvar *msv)
 		msv->cmd_num = 7;
 	else
 		msv->parse_error = 1;
+		printf("-- %d -- \n",msv->cmd_num);
 		msv->block_list->cmd_seq = msv->cmd_num;
+				printf("-- %d -- \n",msv->block_list->cmd_seq );
+
 
 }
 
