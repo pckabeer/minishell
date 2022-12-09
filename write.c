@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/26 03:37:29 by aelsiddi          #+#    #+#             */
-/*   Updated: 2022/12/09 03:43:56 by aelsiddi         ###   ########.fr       */
+/*   Created: 2022/12/09 04:36:09 by aelsiddi          #+#    #+#             */
+/*   Updated: 2022/12/09 04:36:16 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
