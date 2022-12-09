@@ -6,7 +6,7 @@
 /*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:36 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/24 14:47:32 by aelsiddi         ###   ########.fr       */
+/*   Updated: 2022/12/09 04:13:23 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "libft/libft.h"
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <sys/wait.h>
 
 typedef struct s_env
 {
@@ -78,6 +79,7 @@ typedef struct minishellvariables
 	t_env	*env_list;	
 	char	*temp;
 	char	*b_temp;
+	char    *path;
 }t_msvar;
 
 void	parse(t_msvar *msv);
@@ -123,11 +125,14 @@ void 	ft_exec_exit();
 void 	ft_exec_cd(t_msvar *lst);
 char	*ft_substr2(char *s, unsigned int start, size_t	len);
 
-//*****************dir.c******************//
+//*****************dir.c**************//
 int getDirList(char *str);
 int ls(t_msvar *lst);
 
 //***********export.c****************//
-void ft_exec_export(t_msvar *lst);
+void	ft_exec_export(t_msvar *lst);
 
+//*********helper_command.c**********//
+void	handle_other(t_msvar *msv);
+int 	validation(t_msvar *msv, char *opt_arg);
 #endif

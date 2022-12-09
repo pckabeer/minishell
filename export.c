@@ -6,7 +6,7 @@
 /*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 00:51:31 by aelsiddi          #+#    #+#             */
-/*   Updated: 2022/11/24 01:49:47 by aelsiddi         ###   ########.fr       */
+/*   Updated: 2022/12/02 01:51:31 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void ft_exec_export(t_msvar *lst)
 {
 	t_env 	*ext;
 	char 	**holder;
-	char 	input[9] = {"TEST=VAT"};//this should be replaced with the argument of export 
+	char 	input[9]= {"TEST=VAL"};//this should be replaced with the argument of export 
+	
 	holder = ft_split2(input,'=');
 	ext = malloc(sizeof(t_env));
 	ext->key = holder[0];

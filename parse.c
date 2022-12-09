@@ -6,7 +6,7 @@
 /*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 17:05:07 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/11/17 00:13:23 by aelsiddi         ###   ########.fr       */
+/*   Updated: 2022/12/09 04:13:12 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,14 @@ void	parse_cmd_check(t_msvar *msv)
 		msv->cmd_num = 6;
 	else if (!(ft_strncmp("exit", msv->temp, 4)) && strlen(msv->temp) == 4)
 		msv->cmd_num = 7;
+	else if (validation(msv,msv->temp) == 1)
+		msv->cmd_num = 8;
 	else
 	{
+		printf("error from here \n");
 		msv->parse_error = 1;
-		msv->block_list->cmd_seq = msv->cmd_num;
 	}
+	msv->block_list->cmd_seq = msv->cmd_num;
 
 }
 
@@ -82,6 +85,8 @@ void	parse_cmd_init(t_msvar *msv)
 		msv->i = 5;
 	else if (msv->cmd_num == 6)
 		msv->i = 3;
+	else if (msv->cmd_num == 8)
+		msv->i = 8;
 }
 
 void	parse(t_msvar *msv)

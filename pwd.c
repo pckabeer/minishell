@@ -6,7 +6,7 @@
 /*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:44:56 by aelsiddi          #+#    #+#             */
-/*   Updated: 2022/11/21 23:23:38 by aelsiddi         ###   ########.fr       */
+/*   Updated: 2022/12/02 04:15:00 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,43 +69,11 @@ void ft_exec_env(t_msvar *lst)
 		ft_putchar_fd('\n',1);
 		temp = temp->next;
 	}
-	free(temp);
+	// free(temp);
 }
 
 void ft_exec_exit()
 {
 	exit(3);
-}
-
-void ft_exec_cd(t_msvar *lst)
-{
-	t_msvar *temp;
-	t_env *temp2;
-
-	temp = lst;
-	char *holder = ft_substr2(temp->rline,3,(ft_strlen(temp->rline)-3));
-	if(!(ft_strncmp(holder ,"..",ft_strlen(holder))))
-	{
-		printf("This should be replaced with root dir\n");
-		opendir("");
-	}
-	temp2 =  lst->env_list;
-	if (!(getDirList(holder)))
-	{
-		ft_putstr_fd("cd: no such file or directory: ",1);
-		ft_putstr_fd(holder,1);
-		printf("\n");
-		return;
-	}
-	while(temp2)
-	{
-		if(!(strncmp("PWD",temp2->key,3)))
-		{
-			temp2->value = ft_strjoin(temp2->value,"/");
-			temp2->value = ft_strjoin(temp2->value,holder);
-		}
-		temp2 = temp2->next;
-	}
-	ft_exec_pwd(lst);
 }
 
