@@ -6,7 +6,7 @@
 #    By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 18:36:40 by kpanikka          #+#    #+#              #
-#    Updated: 2022/11/24 01:02:28 by aelsiddi         ###   ########.fr        #
+#    Updated: 2022/12/04 22:56:42 by aelsiddi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= minishell
 cc		= gcc -g
 CFLAG	= -Wall -Werror -Wextra -I libft/
 RMFLAG  = -f
-SRC		= minishell.c parse.c execute.c error.c dlist.c echo.c  \
+SRC		= minishell.c parse.c execute.c error.c dlist.c echo.c  cd.c helper_command.c\
 		parse_spl_char.c parse_quote.c env.c elist.c util.c pwd.c dir.c \
 		export.c
 LIBFT	= -L libft -lft

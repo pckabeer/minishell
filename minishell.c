@@ -6,7 +6,7 @@
 /*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:12:03 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/12/01 22:27:00 by aelsiddi         ###   ########.fr       */
+/*   Updated: 2022/12/05 01:21:10 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_minishell(t_msvar	*msv)
 	msv->w_count = 0;
 	msv->exit_flag = 0;
 	msv->block_list = NULL;
-	msv->env_list = NULL;
+	// msv->env_list = NULL;
 	msv->output = ft_calloc(32767, 1);
 	msv->temp = NULL;
 	msv->b_temp = NULL;

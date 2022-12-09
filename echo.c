@@ -6,7 +6,7 @@
 /*   By: aelsiddi <aelsiddi@student.42.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:09:38 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/12/01 22:26:17 by aelsiddi         ###   ########.fr       */
+/*   Updated: 2022/12/04 22:33:51 by aelsiddi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ void	ft_exec_echo(t_msvar *msv)
 	else if (temp->quote == '\"')
 		ft_exec_echo_dq(temp, msv);
 	else
-	{
-
-	}
+		ft_putstr_fd(temp->content,1);
 	//ft_putstr_fd(msv->rline+5, 1);
 	ft_putchar_fd('\n', 1);
 }
